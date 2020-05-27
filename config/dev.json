@@ -1,0 +1,15 @@
+{
+  "Characters": {
+    "dbConfig": {
+      "host": "localhost",
+      "port": 8082,
+      "dbName": "charactersDB",
+      "mongodbURI": "mongodb://localhost:27017/XT_Sapient_DB",
+      "maxPages": 5
+    },
+    "credit": {
+      "initialLimit": 100,
+      "initialDays": 1
+    }
+  }
+}
