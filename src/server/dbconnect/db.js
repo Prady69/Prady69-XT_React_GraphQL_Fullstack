@@ -3,6 +3,8 @@ const config = require('config');
 const saveDataInMongo = require('./saveAPIDataInMongo');
 
 const dbConfig = config.get('Characters.dbConfig');
+mongoose.Promise = global.Promise;
+
 const connectDB = async () => {
   try {
     await mongoose.connect(dbConfig.mongodbURI, {

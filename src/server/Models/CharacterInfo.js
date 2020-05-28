@@ -40,4 +40,5 @@ const CharacterSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('Character', CharacterSchema);
+// eslint-disable-next-line import/prefer-default-export
+export const Character = mongoose.model('Character', CharacterSchema);

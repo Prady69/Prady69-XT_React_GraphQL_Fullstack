@@ -1,8 +1,9 @@
+import { Character } from '../Models/CharacterInfo';
+
 const axios = require('axios');
-const CharacterInfo = require('../Models/CharacterInfo');
 
 const saveDataInMongo = async (maxPages) => {
-  const totalDocs = await CharacterInfo.countDocuments();
+  const totalDocs = await Character.countDocuments();
   let page = 1; let docs = [];
   if (!totalDocs) {
     console.log('Loading data ...');
@@ -30,7 +31,7 @@ const saveDataInMongo = async (maxPages) => {
       origin,
       location,
     }));
-    await CharacterInfo.insertMany(docs);
+    await Character.insertMany(docs);
   }
 };
 
