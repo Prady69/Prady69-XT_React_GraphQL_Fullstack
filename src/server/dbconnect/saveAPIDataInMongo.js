@@ -20,13 +20,14 @@ const saveDataInMongo = async (maxPages) => {
     }
     console.log('########### Data loading completed. #############');
     docs = docs.map(({
-      id, name, image, species, status, created, origin, location
+      id, name, image, species, status, gender, created, origin, location
     }) => ({
       id,
       name,
       image,
       species,
       status,
+      gender,
       created,
       origin,
       location,

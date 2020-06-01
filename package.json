@@ -6,16 +6,21 @@
   "scripts": {
     "build": "webpack --mode production",
     "start": "export NODE_ENV=dev && npm run build && node src/server/index.js",
-    "start_dev": "export NODE_ENV=dev && nodemon --exec babel-node src/server/index.js",
+    "server": "export NODE_ENV=dev && nodemon --exec babel-node src/server/index.js",
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
-    "server": "nodemon src/server/index.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "nodem": "nodemon build"
   },
   "author": "Pradosh Shirgaonkar",
   "license": "ISC",
   "dependencies": {
     "@babel/cli": "^7.10.1",
     "@babel/node": "^7.10.1",
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "@babel/runtime": "^7.10.1",
+    "@material-ui/core": "^4.9.7",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.47",
     "apollo-engine": "^1.1.2",
     "apollo-server-express": "^2.14.0",
     "axios": "^0.19.2",
@@ -37,7 +42,9 @@
     "mongoose-bcrypt": "^1.8.0",
     "mongoose-timestamp": "^0.6.0",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "styled-components": "^5.1.1",
+    "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.10.1",
