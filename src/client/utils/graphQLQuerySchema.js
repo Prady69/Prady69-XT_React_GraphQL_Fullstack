@@ -16,10 +16,6 @@ function makeFilter(filtersObject) {
   return Object.keys(filterString).length ? filterString : '';
 }
 
-function convertObjectToParsing(object) {
-  const json = JSON.stringify(object);
-  return json.replace(/"([^"]+)":/g, '$1:');
-}
 export default function CharacterSchema(val) {
   let filterQuery = makeFilter(val);
   if (filterQuery !== '') {
@@ -30,7 +26,6 @@ export default function CharacterSchema(val) {
   } else {
     filterQuery = '(filter: {})';
   }
-  console.log(filterQuery);
   const CharacterSchemaQ = `query {
         characters${filterQuery} {
             results {
@@ -53,7 +48,6 @@ export default function CharacterSchema(val) {
   return CharacterSchemaQ;
 }
 export function AutoSuggestionCharacterSchema(val) {
-  // const filterQuery = `(filter:{name: ${JSON.stringify(val)}})`;
   const filterQuery = `(filter: ${JSON.stringify(val)})`;
   const AutoSuggestionCharacterSchema = `query {
     characterNamesSearch${filterQuery} {
@@ -63,4 +57,11 @@ export function AutoSuggestionCharacterSchema(val) {
     }
 }`;
   return AutoSuggestionCharacterSchema;
+}
+export function RegisterUserSchema(user) {
+  const filterQuery = `(name: ${JSON.stringify(user.name)}, email: ${JSON.stringify(user.email)}, password: ${JSON.stringify(user.password)})`;
+  const RegisterUserSchema = `mutation {
+        createUser${filterQuery}
+    }`;
+  return RegisterUserSchema;
 }

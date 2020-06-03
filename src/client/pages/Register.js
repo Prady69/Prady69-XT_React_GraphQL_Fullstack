@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -9,6 +9,9 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import RegisterUser from '../services/auth';
+import appConfig from '../config/config';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -41,8 +44,21 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+
 export default function Register() {
   const classes = useStyles();
+  const [nameVal, setNameVal] = useState('');
+  const [emailVal, setEmailVal] = useState('');
+  const [passwordVal, setPasswordVal] = useState('');
+
+  const registerUser = () => {
+    const userInfo = {
+      name: nameVal,
+      email: emailVal,
+      password: passwordVal
+    };
+    RegisterUser(appConfig.ENDPOINT_URL, userInfo);
+  };
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -67,6 +83,7 @@ export default function Register() {
               name="name"
               autoComplete="name"
               autoFocus
+              onBlur={e => setNameVal(e.target.value)}
             />
             <TextField
               variant="outlined"
@@ -78,6 +95,7 @@ export default function Register() {
               name="email"
               autoComplete="email"
               autoFocus
+              onBlur={e => setEmailVal(e.target.value)}
             />
             <TextField
               variant="outlined"
@@ -89,6 +107,7 @@ export default function Register() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onBlur={e => setPasswordVal(e.target.value)}
             />
             <Button
               type="submit"
@@ -96,6 +115,7 @@ export default function Register() {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={registerUser}
             >
               Sign Up
             </Button>

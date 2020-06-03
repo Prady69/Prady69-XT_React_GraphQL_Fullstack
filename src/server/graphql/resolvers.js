@@ -37,7 +37,7 @@ export const resolvers = {
   Mutation: {
     createUser: async (root, args, context, info) => {
       const isEmailPresent = await User.findOne({ email: args.email });
-      if (isEmailPresent.length != null) {
+      if (isEmailPresent != null) {
         throw new Error('Email id already exist');
       }
       args.password = await bcrypt.hash(args.password, 12);
