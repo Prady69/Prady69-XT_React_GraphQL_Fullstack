@@ -5,7 +5,20 @@ export const typeDefs = gql`
   type Query {
     characters (filter: FilterCharacter): Characters
     characterNamesSearch (filter: String) : Characters
+    checkUser (email: String, password: String) : User 
   }
+
+  type Mutation {
+    createUser(name: String, email: String, password: String): String
+  }
+
+  type User {
+    id: ID
+    name: String
+    email: String
+    password: String
+  }
+
   type Characters {
     results: [Character]
   }

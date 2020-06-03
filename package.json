@@ -26,6 +26,7 @@
     "axios": "^0.19.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
     "config": "^3.3.1",
     "cors": "^2.8.5",
@@ -43,6 +44,7 @@
     "mongoose-timestamp": "^0.6.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-router-dom": "^5.2.0",
     "styled-components": "^5.1.1",
     "webpack-node-externals": "^1.7.2"
   },
